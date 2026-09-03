@@ -82,6 +82,14 @@ def get_unity_popen_args(port: int) -> tuple[list, dict]:
     else:
         # CWD = racine du projet (l'application C# peut chercher des chemins relatifs)
         kwargs["cwd"] = get_project_root()
+        
+        # FIX pour le crash SIGSEGV (PAL_SEHException) sur Colab/Docker
+        # Les applications .NET autonomes crashent souvent sur des Linux minimalistes
+        # a cause de la globalisation (ICU) ou du Garbage Collector (cgroups).
+        env = os.environ.copy()
+        env["DOTNET_SYSTEM_GLOBALIZATION_INVARIANT"] = "1"
+        env["DOTNET_gcServer"] = "0"
+        kwargs["env"] = env
 
     return cmd, kwargs
 
