@@ -68,12 +68,10 @@ def get_unity_headless_cwd() -> str:
 
 def get_unity_popen_args(port: int) -> tuple[list, dict]:
     """
-    Retourne (cmd_args, popen_kwargs) adaptes a l OS pour lancer Unity.
+    Retourne (cmd_args, popen_kwargs) adaptes a l OS pour lancer le jeu headless.
     
-    Sur Linux : ajoute -batchmode -nographics (obligatoire sur les serveurs
-    sans ecran comme Colab/Databricks), et fixe le CWD.
-    Sur Windows : Headless.exe est deja compile en mode headless, on masque
-    juste la fenetre console.
+    NOTE: Le binaire Headless est une application C# .NET autonome (pas un build Unity standard).
+    Il n'a pas besoin de -batchmode ni de -nographics, et ne possede pas de dossier _Data/.
     """
     headless_path = get_unity_headless_path()
     cmd = [headless_path, f"tcp://127.0.0.1:{port}"]
@@ -82,10 +80,8 @@ def get_unity_popen_args(port: int) -> tuple[list, dict]:
     if sys.platform == "win32":
         kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
     else:
-        # Sur Linux, le binaire a besoin de ces flags
-        cmd.extend(["-batchmode", "-nographics"])
-        # CWD = dossier du binaire pour qu Unity trouve ses data files
-        kwargs["cwd"] = os.path.dirname(headless_path)
+        # CWD = racine du projet (l'application C# peut chercher des chemins relatifs)
+        kwargs["cwd"] = get_project_root()
 
     return cmd, kwargs
 
