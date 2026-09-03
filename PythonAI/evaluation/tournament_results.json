@@ -1,0 +1,447 @@
+{
+    "participants": {
+        "P1": {
+            "name": "dummy_bot 1",
+            "folder": "dummy_bot"
+        },
+        "P2": {
+            "name": "expert_master_bot 1",
+            "folder": "expert_master_bot"
+        },
+        "P3": {
+            "name": "kiter_bot 1",
+            "folder": "kiter_bot"
+        },
+        "P4": {
+            "name": "random_bot 1",
+            "folder": "random_bot"
+        },
+        "P5": {
+            "name": "random_shooter_bot 1",
+            "folder": "random_shooter_bot"
+        },
+        "P6": {
+            "name": "rush_bot 1",
+            "folder": "rush_bot"
+        },
+        "P7": {
+            "name": "smart_dash_bot 1",
+            "folder": "smart_dash_bot"
+        },
+        "P8": {
+            "name": "smart_shield_bot 1",
+            "folder": "smart_shield_bot"
+        },
+        "P9": {
+            "name": "smart_shooter_bot 1",
+            "folder": "smart_shooter_bot"
+        },
+        "P10": {
+            "name": "target_bot 1",
+            "folder": "target_bot"
+        },
+        "P11": {
+            "name": "dummy_bot 2",
+            "folder": "dummy_bot"
+        },
+        "P12": {
+            "name": "expert_master_bot 2",
+            "folder": "expert_master_bot"
+        },
+        "P13": {
+            "name": "kiter_bot 2",
+            "folder": "kiter_bot"
+        },
+        "P14": {
+            "name": "random_bot 2",
+            "folder": "random_bot"
+        },
+        "P15": {
+            "name": "random_shooter_bot 2",
+            "folder": "random_shooter_bot"
+        },
+        "P16": {
+            "name": "rush_bot 2",
+            "folder": "rush_bot"
+        }
+    },
+    "group_stage": {
+        "A": {
+            "matches": [
+                {
+                    "p1": "P1",
+                    "p2": "P2",
+                    "s1": 0,
+                    "s2": 35,
+                    "draws": 16,
+                    "winner": "P2"
+                },
+                {
+                    "p1": "P1",
+                    "p2": "P3",
+                    "s1": 4,
+                    "s2": 35,
+                    "draws": 12,
+                    "winner": "P3"
+                },
+                {
+                    "p1": "P1",
+                    "p2": "P4",
+                    "s1": 21,
+                    "s2": 0,
+                    "draws": 30,
+                    "winner": "P1"
+                },
+                {
+                    "p1": "P2",
+                    "p2": "P3",
+                    "s1": 43,
+                    "s2": 7,
+                    "draws": 1,
+                    "winner": "P2"
+                },
+                {
+                    "p1": "P2",
+                    "p2": "P4",
+                    "s1": 51,
+                    "s2": 0,
+                    "draws": 0,
+                    "winner": "P2"
+                },
+                {
+                    "p1": "P3",
+                    "p2": "P4",
+                    "s1": 50,
+                    "s2": 0,
+                    "draws": 1,
+                    "winner": "P3"
+                }
+            ],
+            "standings": [
+                "P2",
+                "P3",
+                "P1",
+                "P4"
+            ]
+        },
+        "B": {
+            "matches": [
+                {
+                    "p1": "P5",
+                    "p2": "P6",
+                    "s1": 3,
+                    "s2": 47,
+                    "draws": 1,
+                    "winner": "P6"
+                },
+                {
+                    "p1": "P5",
+                    "p2": "P7",
+                    "s1": 4,
+                    "s2": 47,
+                    "draws": 0,
+                    "winner": "P7"
+                },
+                {
+                    "p1": "P5",
+                    "p2": "P8",
+                    "s1": 4,
+                    "s2": 47,
+                    "draws": 0,
+                    "winner": "P8"
+                },
+                {
+                    "p1": "P6",
+                    "p2": "P7",
+                    "s1": 14,
+                    "s2": 36,
+                    "draws": 1,
+                    "winner": "P7"
+                },
+                {
+                    "p1": "P6",
+                    "p2": "P8",
+                    "s1": 27,
+                    "s2": 22,
+                    "draws": 2,
+                    "winner": "P6"
+                },
+                {
+                    "p1": "P7",
+                    "p2": "P8",
+                    "s1": 22,
+                    "s2": 4,
+                    "draws": 25,
+                    "winner": "P7"
+                }
+            ],
+            "standings": [
+                "P7",
+                "P6",
+                "P8",
+                "P5"
+            ]
+        },
+        "C": {
+            "matches": [
+                {
+                    "p1": "P9",
+                    "p2": "P10",
+                    "s1": 43,
+                    "s2": 0,
+                    "draws": 8,
+                    "winner": "P9"
+                },
+                {
+                    "p1": "P9",
+                    "p2": "P11",
+                    "s1": 45,
+                    "s2": 0,
+                    "draws": 6,
+                    "winner": "P9"
+                },
+                {
+                    "p1": "P9",
+                    "p2": "P12",
+                    "s1": 1,
+                    "s2": 50,
+                    "draws": 0,
+                    "winner": "P12"
+                },
+                {
+                    "p1": "P10",
+                    "p2": "P11",
+                    "s1": 0,
+                    "s2": 0,
+                    "draws": 51,
+                    "winner": "DRAW"
+                },
+                {
+                    "p1": "P10",
+                    "p2": "P12",
+                    "s1": 0,
+                    "s2": 37,
+                    "draws": 14,
+                    "winner": "P12"
+                },
+                {
+                    "p1": "P11",
+                    "p2": "P12",
+                    "s1": 0,
+                    "s2": 43,
+                    "draws": 8,
+                    "winner": "P12"
+                }
+            ],
+            "standings": [
+                "P12",
+                "P9",
+                "P10",
+                "P11"
+            ]
+        },
+        "D": {
+            "matches": [
+                {
+                    "p1": "P13",
+                    "p2": "P14",
+                    "s1": 51,
+                    "s2": 0,
+                    "draws": 0,
+                    "winner": "P13"
+                },
+                {
+                    "p1": "P13",
+                    "p2": "P15",
+                    "s1": 34,
+                    "s2": 17,
+                    "draws": 0,
+                    "winner": "P13"
+                },
+                {
+                    "p1": "P13",
+                    "p2": "P16",
+                    "s1": 21,
+                    "s2": 30,
+                    "draws": 0,
+                    "winner": "P16"
+                },
+                {
+                    "p1": "P14",
+                    "p2": "P15",
+                    "s1": 0,
+                    "s2": 50,
+                    "draws": 1,
+                    "winner": "P15"
+                },
+                {
+                    "p1": "P14",
+                    "p2": "P16",
+                    "s1": 2,
+                    "s2": 49,
+                    "draws": 0,
+                    "winner": "P16"
+                },
+                {
+                    "p1": "P15",
+                    "p2": "P16",
+                    "s1": 5,
+                    "s2": 46,
+                    "draws": 0,
+                    "winner": "P16"
+                }
+            ],
+            "standings": [
+                "P16",
+                "P13",
+                "P15",
+                "P14"
+            ]
+        }
+    },
+    "bracket": {
+        "huitiemes": [
+            {
+                "match_id": "huitiemes_1",
+                "p1": "P2",
+                "p2": "P14",
+                "s1": 51,
+                "s2": 0,
+                "draws": 0,
+                "winner": "P2"
+            },
+            {
+                "match_id": "huitiemes_2",
+                "p1": "P6",
+                "p2": "P10",
+                "s1": 34,
+                "s2": 1,
+                "draws": 16,
+                "winner": "P6"
+            },
+            {
+                "match_id": "huitiemes_3",
+                "p1": "P12",
+                "p2": "P5",
+                "s1": 51,
+                "s2": 0,
+                "draws": 0,
+                "winner": "P12"
+            },
+            {
+                "match_id": "huitiemes_4",
+                "p1": "P13",
+                "p2": "P1",
+                "s1": 46,
+                "s2": 0,
+                "draws": 5,
+                "winner": "P13"
+            },
+            {
+                "match_id": "huitiemes_5",
+                "p1": "P7",
+                "p2": "P11",
+                "s1": 44,
+                "s2": 0,
+                "draws": 7,
+                "winner": "P7"
+            },
+            {
+                "match_id": "huitiemes_6",
+                "p1": "P3",
+                "p2": "P15",
+                "s1": 37,
+                "s2": 14,
+                "draws": 0,
+                "winner": "P3"
+            },
+            {
+                "match_id": "huitiemes_7",
+                "p1": "P16",
+                "p2": "P4",
+                "s1": 50,
+                "s2": 1,
+                "draws": 0,
+                "winner": "P16"
+            },
+            {
+                "match_id": "huitiemes_8",
+                "p1": "P9",
+                "p2": "P8",
+                "s1": 0,
+                "s2": 51,
+                "draws": 0,
+                "winner": "P8"
+            }
+        ],
+        "quarts": [
+            {
+                "match_id": "quarts_1",
+                "p1": "P2",
+                "p2": "P6",
+                "s1": 21,
+                "s2": 25,
+                "draws": 5,
+                "winner": "P6"
+            },
+            {
+                "match_id": "quarts_2",
+                "p1": "P12",
+                "p2": "P13",
+                "s1": 48,
+                "s2": 3,
+                "draws": 0,
+                "winner": "P12"
+            },
+            {
+                "match_id": "quarts_3",
+                "p1": "P7",
+                "p2": "P3",
+                "s1": 26,
+                "s2": 7,
+                "draws": 18,
+                "winner": "P7"
+            },
+            {
+                "match_id": "quarts_4",
+                "p1": "P16",
+                "p2": "P8",
+                "s1": 29,
+                "s2": 19,
+                "draws": 3,
+                "winner": "P16"
+            }
+        ],
+        "demis": [
+            {
+                "match_id": "demis_1",
+                "p1": "P6",
+                "p2": "P12",
+                "s1": 28,
+                "s2": 16,
+                "draws": 7,
+                "winner": "P6"
+            },
+            {
+                "match_id": "demis_2",
+                "p1": "P7",
+                "p2": "P16",
+                "s1": 34,
+                "s2": 17,
+                "draws": 0,
+                "winner": "P7"
+            }
+        ],
+        "finale": [
+            {
+                "match_id": "finale_1",
+                "p1": "P6",
+                "p2": "P7",
+                "s1": 17,
+                "s2": 32,
+                "draws": 2,
+                "winner": "P7"
+            }
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+# Environnements virtuels
+.venv/
+venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs TensorBoard volumineux (facultatif si vous voulez les garder légers)
+PythonAI/training/tensorboard/
+
+# Fichiers temporaires VS Code / IDE
+.vscode/
+.idea/
+
+# ─── Binaires Unity ────────────────────────────────────────────────────────
+# Distribues via GitHub Releases (setup.sh / setup.ps1), pas dans le repo.
+Headless/
+AutomathonGame.exe
+AutomathonGame
+AutomathonGame_Data/
+libdecor-*.so*
+UnityPlayer.dll
+UnityPlayer.so
+UnityCrashHandler64.exe
+MonoBleedingEdge/
+AutomathonMVC_BurstDebugInformation_DoNotShip/
+D3D12/
+
+# ─── Modeles entraines ─────────────────────────────────────────────────────
+# Volumineux, distribues via DBFS Databricks ou Google Drive.
+# bc_model.zip et expert_dataset.npz sont gardes (reference, pre-generes).
+PythonAI/training/rl_model.zip
+PythonAI/training/rl_model_interrupted.zip
+PythonAI/training/checkpoints/
+
+# ─── Exports agents ────────────────────────────────────────────────────────
+PythonAI/training/mon_agent_*.zip

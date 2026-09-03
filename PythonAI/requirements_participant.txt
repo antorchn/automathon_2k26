@@ -1,0 +1,9 @@
+zmq
+pydantic
+pyzmq
+gymnasium>=0.29.0
+numpy
+stable-baselines3>=2.2.0
+torch
+tensorboard
+tqdm
