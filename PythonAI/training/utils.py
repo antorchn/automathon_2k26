@@ -55,11 +55,47 @@ def get_unity_headless_path() -> str:
     return path
 
 
+def get_unity_headless_cwd() -> str:
+    """
+    Retourne le working directory depuis lequel lancer le binaire Unity.
+    Unity cherche ses fichiers data (*_Data/) relativement au CWD.
+    Sur Linux (Colab/Databricks), il faut que le CWD soit le dossier
+    contenant le binaire, pas PythonAI/.
+    """
+    headless_path = get_unity_headless_path()
+    return os.path.dirname(headless_path)
+
+
+def get_unity_popen_args(port: int) -> tuple[list, dict]:
+    """
+    Retourne (cmd_args, popen_kwargs) adaptes a l OS pour lancer Unity.
+    
+    Sur Linux : ajoute -batchmode -nographics (obligatoire sur les serveurs
+    sans ecran comme Colab/Databricks), et fixe le CWD.
+    Sur Windows : Headless.exe est deja compile en mode headless, on masque
+    juste la fenetre console.
+    """
+    headless_path = get_unity_headless_path()
+    cmd = [headless_path, f"tcp://127.0.0.1:{port}"]
+    kwargs = {}
+
+    if sys.platform == "win32":
+        kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
+    else:
+        # Sur Linux, le binaire a besoin de ces flags
+        cmd.extend(["-batchmode", "-nographics"])
+        # CWD = dossier du binaire pour qu Unity trouve ses data files
+        kwargs["cwd"] = os.path.dirname(headless_path)
+
+    return cmd, kwargs
+
+
 def make_popen_kwargs() -> dict:
     """
     Retourne les kwargs supplementaires pour subprocess.Popen selon l OS.
     Windows : masque la fenetre console du processus Unity.
     Linux   : pas de kwargs supplementaires.
+    DEPRECATED : utiliser get_unity_popen_args() pour les lancements Unity.
     """
     if sys.platform == "win32":
         return {"creationflags": subprocess.CREATE_NO_WINDOW}
@@ -74,6 +110,25 @@ def get_port_base() -> int:
     Defaut : 5600.
     """
     return int(os.environ.get("AUTOMATHON_PORT_BASE", "5600"))
+
+
+def get_num_envs() -> int:
+    """
+    Retourne le nombre d instances Unity a lancer en parallele.
+    Configurable via AUTOMATHON_NUM_ENVS.
+    Defaut : min(os.cpu_count(), 16) pour ne pas surcharger les VMs Colab.
+    """
+    default = min(os.cpu_count() or 2, 16)
+    return int(os.environ.get("AUTOMATHON_NUM_ENVS", str(default)))
+
+
+def get_startup_wait() -> int:
+    """
+    Nombre de secondes a attendre apres le lancement de Unity.
+    Sur Colab/Databricks les VMs sont plus lentes, 15s est plus sur.
+    Configurable via AUTOMATHON_STARTUP_WAIT. Defaut : 15.
+    """
+    return int(os.environ.get("AUTOMATHON_STARTUP_WAIT", "15"))
 
 
 def get_checkpoint_dir() -> str:

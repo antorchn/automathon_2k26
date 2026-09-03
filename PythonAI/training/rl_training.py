@@ -9,7 +9,10 @@ from stable_baselines3.common.vec_env import SubprocVecEnv
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.env.automathon_env import AutomathonEnv
 from agents.neural_expert_bot.feature_extractor import extract_features
-from training.utils import get_unity_headless_path, make_popen_kwargs, get_port_base, get_checkpoint_dir
+from training.utils import (
+    get_unity_popen_args, get_port_base, get_checkpoint_dir,
+    get_num_envs, get_startup_wait,
+)
 
 
 class DynamicOpponentCallback(BaseCallback):
@@ -32,19 +35,24 @@ class DynamicOpponentCallback(BaseCallback):
         return True
 
 
-def make_env(port: int, unity_exe_path: str):
+def make_env(port: int):
     """
     Fonction constructeur pour SubprocVecEnv.
     Lance une instance Unity Headless unique sur un port unique.
-    Compatible Windows et Linux.
+    Compatible Windows et Linux (Colab, Databricks).
     """
     def _init():
-        print(f"Lancement de Unity sur le port {port}...")
-        process = subprocess.Popen(
-            [unity_exe_path, f"tcp://127.0.0.1:{port}"],
-            **make_popen_kwargs()
-        )
-        time.sleep(5)
+        startup_wait = get_startup_wait()
+        print(f"Lancement de Unity sur le port {port} (attente {startup_wait}s)...")
+
+        cmd, kwargs = get_unity_popen_args(port)
+        process = subprocess.Popen(cmd, **kwargs)
+        time.sleep(startup_wait)
+
+        # Vérifier que Unity n'a pas crashé au démarrage
+        if process.poll() is not None:
+            print(f"\n[ERREUR] Unity (port {port}) a crashé au lancement (code {process.returncode}).")
+            raise RuntimeError(f"Unity Headless a crashé sur le port {port}.")
 
         env = AutomathonEnv(tcp_port=str(port), extractor_fn=extract_features)
 
@@ -65,15 +73,14 @@ def make_env(port: int, unity_exe_path: str):
 def main():
     from stable_baselines3.common.callbacks import CheckpointCallback
 
-    num_envs = 16
+    num_envs = get_num_envs()
     start_port = get_port_base()
-    unity_exe_path = get_unity_headless_path()
 
-    print(f"Binaire Unity    : {unity_exe_path}")
+    print(f"Nombre d'envs    : {num_envs} (AUTOMATHON_NUM_ENVS pour changer)")
     print(f"Ports            : {start_port} → {start_port + num_envs - 1}")
     print(f"Création de {num_envs} environnements en parallèle...")
 
-    env = SubprocVecEnv([make_env(start_port + i, unity_exe_path) for i in range(num_envs)])
+    env = SubprocVecEnv([make_env(start_port + i) for i in range(num_envs)])
 
     bc_model_path = os.path.join(os.path.dirname(__file__), "bc_model.zip")
     tensorboard_log = os.path.join(os.path.dirname(__file__), "tensorboard")
